@@ -212,3 +212,38 @@ section {
     background-color: #2575fc;
     transform: scale(1.1);
 }
+
+h1, h2 {
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.equation {
+    font-style: italic;
+    color: #555;
+}
+
+.page {
+    display: none;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.equation {
+    font-style: italic;
+    color: #555;
+    font-size: 1.2em; /* Adjust the font size as needed */
+    margin: 10px 0; /* Add some margin for spacing */
+}

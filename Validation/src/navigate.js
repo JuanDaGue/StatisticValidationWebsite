@@ -153,3 +153,32 @@ function Home (){
     overviewSection.classList.add('inactive')
 
 }
+
+
+let currentPage = 1;
+const totalPages = 2;
+
+function showPage(page) {
+    for (let i = 1; i <= totalPages; i++) {
+        document.getElementById(`page${i}`).style.display = 'none';
+    }
+    document.getElementById(`page${page}`).style.display = 'block';
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+    }
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showPage(currentPage);
+});

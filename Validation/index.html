@@ -43,7 +43,8 @@
         </div>
        
     </header>
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <section id="home">
         <h1>Validation Statistical Model of the 21 cm Cosmological Signal</h1>
         <p>
@@ -55,10 +56,19 @@
     <section id="overview">
         <h2>Overview</h2>
         <p>
-            The EDGES experiment reported the first detection of the 21 cm absorption feature, 
-            suggesting the presence of neutral hydrogen in the early universe. 
-            Our project aims to validate the statistical model used in this discovery.
+            This project aims to validate the physical models developed by the EDGES radio telescope collaboration [6], who collected data to measure the 21 cm cosmological signal produced by primordial hydrogen during the reionization era. These publicly accessible data were used to replicate the physical and statistical models reported by the collaboration [6], with which a model of the sky temperature signal 
+            <p class="equation">
+
+                𝑇
+                𝐹
+                T 
+                F
+            </p>
+​
+  was developed using Bayesian statistics. The goal was to reproduce the reported detection of the 21 cm signal from primordial hydrogen.
         </p>
+
+        <img src="./Img/Captura2.PNG" class="ecuation">
     </section>
 
     <section id="background">
@@ -66,7 +76,18 @@
         <p>
             The 21 cm line is a key observational probe of the early universe, providing insights into the 
             epoch of reionization and the formation of the first stars and galaxies.
+
         </p>
+        <p>The validation process was carried out using the Gelman-Rubin discrepancy criterion [7], which was employed to verify the model's ability to reproduce synthetic data that adequately mimic the observations made by the antenna. Out of the four models analyzed in this article, it was not possible to fully validate the absorption of primordial hydrogen, as, despite statistically solid models, no physical value was obtained for the foreground temperature 
+            <p class="equation">
+
+                𝑇
+                𝐹
+                T 
+                F
+            </p>
+            ​
+              or for the temperature due to the 21 cm emission. Nevertheless, these ionospheric models may serve as a basis for future projects and simulations of the sky in radio waves.</p>
     </section>
 
     <section id="methodology">
@@ -85,6 +106,39 @@
             for potential anomalies in the 21 cm signal. We have developed a robust framework that incorporates 
             various astrophysical and cosmological parameters to enhance the reliability of the model.
         </p>
+        <div id="page1" class="page">
+            <h1>Modeling</h1>
+            <p>The data used are Frequency (ν[MHz]) vs Sky Temperature (T<sub>sky</sub>[K]). The temperature (T<sub>sky</sub>) is modeled as the sum of T<sub>F</sub> “Foreground Temperature” and T<sub>21</sub> “21 cm Temperature”.</p>
+            <p class="equation">$$ T_{21} = -A \left( \frac{1 - e^{\tau} e^{B}}{1 - e^{-\tau}} \right) $$</p>
+            
+            <h2>Modeling</h2>
+            <p>T<sub>21</sub> is modeled according to the following expression:</p>
+            <p class="equation">$$ B = \frac{4(v - \nu_0)^2}{w^2} \log \left( -\frac{1}{\tau} \log \left( 1 + e^{-\tau} \right) \right) $$</p>
+            <p>Where:</p>
+            <p>TEMPERATURE DUE TO 21 CM EMISSION</p>
+        </div>
+    
+        <div id="page2" class="page">
+            <h2>Modeling</h2>
+            <p>T<sub>F</sub>(ν) is the foreground brightness temperature due to galactic and ionospheric emission, which is modeled polynomially in log(ν/ν<sub>c</sub>).</p>
+            <p class="equation">$$ T_F(\nu) = b_0 \left( \frac{\nu}{\nu_c} \right)^{\alpha + b_1 + b_2 \log(\nu/\nu_c)} e^{b_3(\nu/\nu_c)^{-2}} + T_e \left( 1 - e^{-b_3(\nu/\nu_c)^{-2}} \right) $$</p>
+            <p>Where:</p>
+            <p>Foreground Temperature</p>
+    
+            <h2>Modeling</h2>
+            <p>Bowman makes a linear approximation of the equation assuming that b<sub>1</sub>, b<sub>2</sub>, and b<sub>3</sub> are all ≪1, producing the following equation for the foreground temperature:</p>
+            <p class="equation">$$ T_F(\nu) = a_0 \left( \frac{\nu}{\nu_c} \right)^{-2.5} + a_1 \left( \frac{\nu}{\nu_c} \right)^{-2.5} \log \left( \frac{\nu}{\nu_c} \right) + a_2 \left( \frac{\nu}{\nu_c} \right)^{-2.5} \log^2 \left( \frac{\nu}{\nu_c} \right) + a_3 \left( \frac{\nu}{\nu_c} \right)^{-4.5} + a_4 \left( \frac{\nu}{\nu_c} \right)^{-2.0} $$</p>
+            <p>Where:</p>
+            <p>Foreground Temperature (Bowman)</p>
+    
+            <h2>Modeling</h2>
+            <p>It can be seen that between the expressions T<sub>21</sub> and T<sub>F</sub> there are a total of 9 parameters. These parameters are determined using Bayesian methods with Python libraries (Emcee and PyMC3).</p>
+            <p class="equation">$$ T_{sky}(a_0, a_1, a_2, a_3, a_4, A, \nu_0, w, \tau) = T_F(a_0, a_1, a_2, a_3, a_4) + T_{21}(A, \nu_0, w, \tau) $$</p>
+        </div>
+        <div class="pagination">
+            <button id="prev" onclick="prevPage()">&lt;</button>
+            <button id="next" onclick="nextPage()">&gt;</button>
+        </div>
     </section>
 
     <section id="data-analysis">
