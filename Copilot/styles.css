@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #C8ACD6;
+    color: #17153B;
+    margin: 0;
+    padding: 0;
+    background-image: url('galaxy.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: #2E236C;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    color: #C8ACD6;
+    text-decoration: none;
+}
+
+section {
+    padding: 2rem;
+    background-color: rgba(23, 21, 59, 0.8);
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.project {
+    margin-bottom: 2rem;
+}
+
+button {
+    background-color: #433D8B;
+    color: #C8ACD6;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2E236C;
+}
+
+.dark-mode {
+    background-color: #17153B;
+    color: #C8ACD6;
+}
+
+.dark-mode header {
+    background-color: #433D8B;
+}
+
+.dark-mode nav a {
+    color: #17153B;
+}

@@ -1,0 +1,10 @@
+.custom-icon {
+    width: 50px; /* Increase the size */
+    height: 50px; /* Increase the size */
+    transition: transform 0.3s ease, fill 0.3s ease; /* Add transitions */
+}
+
+.custom-icon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+    fill: red; /* Change color on hover */
+}

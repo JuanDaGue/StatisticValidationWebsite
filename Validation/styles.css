@@ -1,0 +1,214 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #151515;
+    color: #EEEEEE;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+header {
+    background-color: #1c1c1c;
+    padding: 1rem;
+    box-shadow: 0px 0px 15px #A91D3A;
+}
+header.active {
+    background-color: #151515;
+    padding: 1rem;
+    box-shadow: none
+}
+
+
+.dropdown-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu > li {
+    position: relative;
+}
+
+.dropdown-menu > li > a {
+    color: #EEEEEE;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #C73659;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu > li:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content li {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-content li a {
+    color: #EEEEEE;
+    text-decoration: none;
+}
+
+section {
+    padding: 2rem;
+    text-align: left;
+}
+
+#dark-mode-toggle {
+    background-color: #C73659;
+    color: #EEEEEE;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #EEEEEE;
+    color: #151515;
+}
+
+body.dark-mode header {
+    background-color: #151515;
+}
+
+body.dark-mode .dropdown-content {
+    background-color: #A91D3A;
+}
+
+body.dark-mode #dark-mode-toggle {
+    background-color: #151515;
+    color: #EEEEEE;
+}
+
+
+/* Additional styles for the model section */
+#model {
+    background-color: #1C1C1C;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px #A91D3A;
+}
+
+#model h2 {
+    color: #C73659;
+}
+
+
+.inactive{
+    display: none;
+}
+
+
+.custom-icon {
+    width: 24px; /* Set the size */
+    height: 24px; /* Set the size */
+    fill: black; /* Initial color */
+    background-color: #A91D3A;
+    transition: transform 0.3s ease, fill 0.3s ease; /* Add transitions */
+}
+
+.custom-icon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+    fill: red; /* Change color on hover */
+}
+.menu{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav1 {
+    flex: 0 0 10%; /* Flex-grow: 0, Flex-shrink: 0, Flex-basis: 10% */
+}
+
+.nav2 {
+    flex: 0 0 80%; /* Flex-grow: 0, Flex-shrink: 0, Flex-basis: 80% */
+
+}
+
+section {
+    background: linear-gradient(180deg, #6a11cb 0%, #1C1C1C 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 60px
+
+}
+
+#home:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px #A91D3A;
+}
+
+#home h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px
+}
+
+#home h1 i {
+    margin-right: 10px;
+    color: #ffdd57;
+    transition: color 0.3s ease;
+}
+
+#home h1:hover i {
+    color: #ff5733;
+}
+
+#home p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin: 60px;
+}
+
+
+#home-button{
+    background: linear-gradient(180deg, #6a11cb 0%, #1C1C1C 100%);
+    color: white;
+    padding: 1.5px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+#home-button:hover {
+    background-color: #2575fc;
+    transform: scale(1.1);
+}
