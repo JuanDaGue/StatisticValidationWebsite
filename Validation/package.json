@@ -1,0 +1,12 @@
+{
+  "name": "validation",
+  "version": "1.0.0",
+  "description": "This project focuses on the statistical validation of the 21 cm cosmological signal model reported by the EDGES (Experiment to Detect the Global Epoch of Reionization Signature) radio telescope. The signal is believed to originate from the early universe during the epoch of reionization. The primary objective of this project is to verify the authenticity and reliability of the signal by applying various statistical methods and models.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
