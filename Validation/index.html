@@ -43,7 +43,7 @@
         </div>
        
     </header>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <section id="home">
         <h1>Validation Statistical Model of the 21 cm Cosmological Signal</h1>
@@ -56,16 +56,10 @@
     <section id="overview">
         <h2>Overview</h2>
         <p>
-            This project aims to validate the physical models developed by the EDGES radio telescope collaboration [6], who collected data to measure the 21 cm cosmological signal produced by primordial hydrogen during the reionization era. These publicly accessible data were used to replicate the physical and statistical models reported by the collaboration [6], with which a model of the sky temperature signal 
-            <p class="equation">
-
-                𝑇
-                𝐹
-                T 
-                F
-            </p>
-​
-  was developed using Bayesian statistics. The goal was to reproduce the reported detection of the 21 cm signal from primordial hydrogen.
+            This project aims to validate the physical models developed by the EDGES radio telescope collaboration, who collected data to measure the 21 cm cosmological signal produced by primordial hydrogen during the reionization era. These publicly accessible data were used to replicate the physical and statistical models reported by the collaboration, with which a model of the sky temperature signal  T<sub>sky</sub>  </p>
+             
+​       <p>
+             was developed using Bayesian statistics. The goal was to reproduce the reported detection of the 21 cm signal from primordial hydrogen.
         </p>
 
         <img src="./Img/Captura2.PNG" class="ecuation">
@@ -78,15 +72,12 @@
             epoch of reionization and the formation of the first stars and galaxies.
 
         </p>
-        <p>The validation process was carried out using the Gelman-Rubin discrepancy criterion [7], which was employed to verify the model's ability to reproduce synthetic data that adequately mimic the observations made by the antenna. Out of the four models analyzed in this article, it was not possible to fully validate the absorption of primordial hydrogen, as, despite statistically solid models, no physical value was obtained for the foreground temperature 
+        <p>The validation process was carried out using the Gelman-Rubin discrepancy criterion, which was employed to verify the model's ability to reproduce synthetic data that adequately mimic the observations made by the antenna. Out of the four models analyzed in this article, it was not possible to fully validate the absorption of primordial hydrogen, as, despite statistically solid models, no physical value was obtained for the foreground temperature 
             <p class="equation">
 
-                𝑇
-                𝐹
-                T 
-                F
+                T<sub>sky</sub>
             </p>
-            ​
+            ​<p>
               or for the temperature due to the 21 cm emission. Nevertheless, these ionospheric models may serve as a basis for future projects and simulations of the sky in radio waves.</p>
     </section>
 
@@ -97,6 +88,7 @@
             to analyze the data obtained from the EDGES radio telescope. The validation process involved 
             cross-referencing with other cosmological observations and simulations.
         </p>
+        <img src="./Img/figure_plot.png" class="plot1"/>
     </section>
 
     <section id="model">
@@ -107,11 +99,11 @@
             various astrophysical and cosmological parameters to enhance the reliability of the model.
         </p>
         <div id="page1" class="page">
-            <h1>Modeling</h1>
+            <h2>Modeling</h2>
             <p>The data used are Frequency (ν[MHz]) vs Sky Temperature (T<sub>sky</sub>[K]). The temperature (T<sub>sky</sub>) is modeled as the sum of T<sub>F</sub> “Foreground Temperature” and T<sub>21</sub> “21 cm Temperature”.</p>
             <p class="equation">$$ T_{21} = -A \left( \frac{1 - e^{\tau} e^{B}}{1 - e^{-\tau}} \right) $$</p>
             
-            <h2>Modeling</h2>
+
             <p>T<sub>21</sub> is modeled according to the following expression:</p>
             <p class="equation">$$ B = \frac{4(v - \nu_0)^2}{w^2} \log \left( -\frac{1}{\tau} \log \left( 1 + e^{-\tau} \right) \right) $$</p>
             <p>Where:</p>
@@ -119,19 +111,16 @@
         </div>
     
         <div id="page2" class="page">
-            <h2>Modeling</h2>
+          
             <p>T<sub>F</sub>(ν) is the foreground brightness temperature due to galactic and ionospheric emission, which is modeled polynomially in log(ν/ν<sub>c</sub>).</p>
             <p class="equation">$$ T_F(\nu) = b_0 \left( \frac{\nu}{\nu_c} \right)^{\alpha + b_1 + b_2 \log(\nu/\nu_c)} e^{b_3(\nu/\nu_c)^{-2}} + T_e \left( 1 - e^{-b_3(\nu/\nu_c)^{-2}} \right) $$</p>
-            <p>Where:</p>
-            <p>Foreground Temperature</p>
+            <p>Where :Foreground Temperature</p>
     
-            <h2>Modeling</h2>
+
             <p>Bowman makes a linear approximation of the equation assuming that b<sub>1</sub>, b<sub>2</sub>, and b<sub>3</sub> are all ≪1, producing the following equation for the foreground temperature:</p>
             <p class="equation">$$ T_F(\nu) = a_0 \left( \frac{\nu}{\nu_c} \right)^{-2.5} + a_1 \left( \frac{\nu}{\nu_c} \right)^{-2.5} \log \left( \frac{\nu}{\nu_c} \right) + a_2 \left( \frac{\nu}{\nu_c} \right)^{-2.5} \log^2 \left( \frac{\nu}{\nu_c} \right) + a_3 \left( \frac{\nu}{\nu_c} \right)^{-4.5} + a_4 \left( \frac{\nu}{\nu_c} \right)^{-2.0} $$</p>
-            <p>Where:</p>
-            <p>Foreground Temperature (Bowman)</p>
+            <p>Where T<sub>F</sub>: Foreground Temperature (Bowman)</p>
     
-            <h2>Modeling</h2>
             <p>It can be seen that between the expressions T<sub>21</sub> and T<sub>F</sub> there are a total of 9 parameters. These parameters are determined using Bayesian methods with Python libraries (Emcee and PyMC3).</p>
             <p class="equation">$$ T_{sky}(a_0, a_1, a_2, a_3, a_4, A, \nu_0, w, \tau) = T_F(a_0, a_1, a_2, a_3, a_4) + T_{21}(A, \nu_0, w, \tau) $$</p>
         </div>
@@ -147,23 +136,46 @@
             Data analysis was performed using Python and specialized libraries such as NumPy, SciPy, and Astropy. 
             The analysis focused on noise reduction, signal extraction, and statistical validation of the results.
         </p>
+    <div class="container">
+        <div>
+
+            <h2>priors gaussianos</h2>
+            <p>
+                Profundidad de la señal 21 cm
+                <p class="equation">
+                    $$A=0.72 ± 0.09 K$$
+                </p> 
+                Criterio de discrepancia P
+                <p class="equation"> P= 0.82</p>  Modelo sólido estadísticamente
+                Convergencia
+                $$Rhat ≈1.002$$, las cadenas  convergen  totalmente
+                Modelo PyMC3
+            </p>
+        </div>
+        <div>
+            <img src="./Img/Corner_var.png" class="plot2"/>
+        </div>
+    </div>
     </section>
 
     <section id="conclusions">
         <h2>Conclusions</h2>
-        <p>
-            Our findings suggest that the 21 cm signal reported by EDGES is consistent with theoretical expectations, 
-            but further observations and validations are required to confirm this discovery. The model developed 
-            in this project provides a solid foundation for future research in this area.
-        </p>
+        <p><strong>Modelo PyMC3 (1.0) priors gaussianos:</strong> Modelo generado mediante PyMC3 utilizando una distribución gaussiana en la función prior.</p>
+        <p><strong>Modelo PyMC3 (2.0), priors gaussianos y σ variable:</strong> Modelo PyMC3 utilizando una distribución gaussiana en la función prior con un error σ uniforme.</p>
+        <p><strong>Modelo (Bn) Emcee (3.0), priors uniformes y σ fijo:</strong> Modelo Emcee físicamente motivado con priors uniformes y σ=0.15 K.</p>
+        <p><strong>Modelo (Bn) Emcee (4.0), priors σ uniforme:</strong> Modelo Emcee físicamente motivado con priors uniformes y σ uniforme.</p>
+        <img src="./Img/result.png" alt="plot2" class="plot2">
     </section>
 
     <section id="references">
         <h2>References</h2>
         <ul>
-            <li>Bowman, J. D., et al. (2018). An absorption profile centred at 78 megahertz in the sky-averaged spectrum.</li>
-            <li>Pritchard, J. R., & Loeb, A. (2012). 21 cm cosmology in the epoch of reionization.</li>
-            <!-- Add more references as needed -->
+            <li>Statistical Rethinking, 2015: A Bayesian Course with Examples in R and 4 STAN - Richard McElreath - Google Libros.</li>
+            <li>Judd D. Bowman, Alan E.E. Rogers, Raul A. Monsalve, Thomas J. Mozdzen, and Nivedita Mahesh. An absorption profile centered at 78 megahertz in the sky-averaged spectrum. Nature, 555(7694):67–70, Feb 2018.</li>
+            <li>Germán Chaparro-Molano, Juan Carlos Cuervo, Oscar Alberto Restrepo Gaitán, and Sergio Torres Arzayús. Predicting extragalactic distance errors using Bayesian inference in multimeasurement catalogues. Monthly Notices of the Royal Astronomical Society, 485(3):4343–4358, Feb 2019.</li>
+            <li>H. K. Vedantham, L. V.E. Koopmans, A. G. De Bruyn, S. J. Wijnholds, B. Ciardi, and M. A. Brentjens. Chromatic effects in the 21 cm global signal from the cosmic dawn. Monthly Notices of the Royal Astronomical Society, 437(2):1056–1069, Nov 2013.</li>
+            <li>German Chaparro Molano, Pablo Cuartas Restrepo. Modelo de recepción de la señal cosmológica de 21 cm para radiotelescopios de baja frecuencia. Instituto de Física - UdeA: Mayo 2020.</li>
+            <li>T. J. Mozdzen, J. D. Bowman, R. A. Monsalve, and A. E.E. Rogers. Limits on foreground subtraction from chromatic beam effects in global redshifted 21 cm measurements. Monthly Notices of the Royal Astronomical Society, 455(4):3890–3900, Feb 2016.</li>
         </ul>
     </section>
 

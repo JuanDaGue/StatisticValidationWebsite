@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', navigate, false)
 window.addEventListener('hashchange', navigate, false)
 msg=console.log;
-msg('Holeeeeeeeeeeeeeeeeeee')
+let currentSectionIndex = 0;
 customIcon.addEventListener('click', ()=>{
     if(navMenu.getAttribute('class').includes('inactive')){
         navMenu.classList.remove('inactive')
@@ -22,7 +22,8 @@ function navigate() {
     hash.startsWith('#methodology') ? methodology() :
     hash.startsWith('#data-analysis') ? dataAnalysis() :
     hash.startsWith('#contact') ? contact() :
-    hash === '#categories' ? console.log('Ok') :
+    hash.startsWith('#conclusions') ? conclusions() :
+    hash.startsWith('#home') ? Home():
     Home();
     
     window.scrollTo(0, 0);
@@ -32,7 +33,7 @@ navigate();
 
 function result (){
 
-    console.log('result!!!')
+
     referencesSection.classList.remove('inactive')
 
     homeSection.classList.add('inactive');
@@ -43,19 +44,21 @@ function result (){
     methodologySection.classList.add('inactive')
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 4;
 }
 function overview (){
 
     overviewSection.classList.remove('inactive')
 
     homeSection.classList.add('inactive');
-    referencesSection.classList.add('inactive')
-    contactSection.classList.add('inactive')
-    conclusionsSection.classList.add('inactive')
-    dataAnalysisSection.classList.add('inactive') 
-    modelSection.classList.add('inactive')
-    methodologySection.classList.add('inactive')
-    backgroundSection.classList.add('inactive')
+    referencesSection.classList.add('inactive');
+    contactSection.classList.add('inactive');
+    conclusionsSection.classList.add('inactive');
+    dataAnalysisSection.classList.add('inactive');
+    modelSection.classList.add('inactive');
+    methodologySection.classList.add('inactive');
+    backgroundSection.classList.add('inactive');
+    currentSectionIndex = 1;
 }
 function references (){
 
@@ -69,6 +72,7 @@ function references (){
     methodologySection.classList.add('inactive')
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 7;
 }
 
 function contact (){
@@ -83,6 +87,7 @@ function contact (){
     methodologySection.classList.add('inactive')
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 8;
 }
 
 function model (){
@@ -97,8 +102,22 @@ function model (){
     methodologySection.classList.add('inactive')
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 4;
 }
+function conclusions(){
 
+    conclusionsSection.classList.remove('inactive')
+    
+    contactSection.classList.add('inactive')
+    modelSection.classList.add('inactive')
+    homeSection.classList.add('inactive');
+    referencesSection.classList.add('inactive')
+    dataAnalysisSection.classList.add('inactive') 
+    methodologySection.classList.add('inactive')
+    backgroundSection.classList.add('inactive')
+    overviewSection.classList.add('inactive')
+    currentSectionIndex = 6;
+}
 function methodology (){
 
     methodologySection.classList.remove('inactive')
@@ -111,6 +130,7 @@ function methodology (){
     dataAnalysisSection.classList.add('inactive') 
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 3;
 }
 
 function dataAnalysis (){
@@ -125,6 +145,7 @@ function dataAnalysis (){
     methodologySection.classList.add('inactive')
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 5;
 }
 
 function background (){
@@ -139,6 +160,7 @@ function background (){
     conclusionsSection.classList.add('inactive')
     methodologySection.classList.add('inactive')
     overviewSection.classList.add('inactive')
+    currentSectionIndex = 2;
 }
 function Home (){
     homeSection.classList.remove('inactive');
@@ -151,7 +173,7 @@ function Home (){
     methodologySection.classList.add('inactive')
     backgroundSection.classList.add('inactive')
     overviewSection.classList.add('inactive')
-
+    currentSectionIndex = 0;
 }
 
 
@@ -182,3 +204,57 @@ function prevPage() {
 document.addEventListener('DOMContentLoaded', () => {
     showPage(currentPage);
 });
+
+
+
+let currentRotation = 0;
+const container = document.querySelector('.container');
+// const rotateButton = document.getElementById('rotateButton');
+
+// rotateButton.addEventListener('click', rotateSection);
+
+
+
+function rotateSection(container) {
+
+    window.addEventListener('wheel', (event) => {
+        if (event.deltaY > 0) {
+            currentRotation -= 90;
+            container.style.transform = `rotateY(${currentRotation}deg)`;
+        }
+    });
+}
+
+const sections = document.querySelectorAll('section');
+
+let isThrottled = false;
+const throttleTime = 20; // 1 second delay
+
+window.addEventListener('wheel', (event) => {
+    if (isThrottled) return;
+
+    if (event.deltaY > 0) {
+        changeSection(1);
+    } else if (event.deltaY < 0) {
+        changeSection(-1);
+    }
+
+    isThrottled = true;
+    setTimeout(() => {
+        isThrottled = false;
+    }, throttleTime);
+});
+
+function changeSection(direction) {
+    //sections[currentSectionIndex].classList.remove('active');
+    location.hash=sections[currentSectionIndex].getAttribute('id')
+    currentSectionIndex += direction;
+    
+    if (currentSectionIndex < 0) {
+        currentSectionIndex = sections.length - 1;
+    } else if (currentSectionIndex >= sections.length) {
+        currentSectionIndex = 0;
+    }
+    
+    //sections[currentSectionIndex].classList.add('active');
+}

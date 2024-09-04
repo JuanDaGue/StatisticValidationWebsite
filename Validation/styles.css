@@ -58,11 +58,11 @@ header.active {
     color: #EEEEEE;
     text-decoration: none;
 }
-
+/* 
 section {
     padding: 2rem;
     text-align: left;
-}
+} */
 
 #dark-mode-toggle {
     background-color: #C73659;
@@ -92,6 +92,12 @@ body.dark-mode #dark-mode-toggle {
     color: #EEEEEE;
 }
 
+body.dark-mode section {
+    background: linear-gradient(180deg, #EEEEEE 0%, #A91D3A 100%);
+    color: #151515;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
 
 /* Additional styles for the model section */
 #model {
@@ -102,13 +108,10 @@ body.dark-mode #dark-mode-toggle {
 }
 
 #model h2 {
-    color: #C73659;
+    color: #333;
 }
 
 
-.inactive{
-    display: none;
-}
 
 
 .custom-icon {
@@ -138,7 +141,7 @@ body.dark-mode #dark-mode-toggle {
 
 .nav2 {
     flex: 0 0 80%; /* Flex-grow: 0, Flex-shrink: 0, Flex-basis: 80% */
-
+    
 }
 
 section {
@@ -149,8 +152,12 @@ section {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 60px
+    margin: 60px;
+    box-shadow: 0px 0px 15px #A91D3A
 
+}
+.inactive{
+    display: none;
 }
 
 #home:hover {
@@ -214,17 +221,22 @@ section {
 }
 
 h1, h2 {
-    color: #333;
+    color: #C73659;
+    font-family: 'Georgia', serif; /* Font for h6 */
+    /* font-size: 1em; */
 }
 
-p {
-    margin-bottom: 10px;
+p, ul li {
+    font-family: 'Verdana', sans-serif; /* Font for paragraphs */
+    font-size: 1em; /* Equivalent to 16px */
+    color: #fff;
+    margin-bottom: 10px
 }
 
-.equation {
+/* .equation {
     font-style: italic;
     color: #555;
-}
+} */
 
 .page {
     display: none;
@@ -243,7 +255,37 @@ button {
 }
 .equation {
     font-style: italic;
-    color: #555;
+    color: #606872;
     font-size: 1.2em; /* Adjust the font size as needed */
     margin: 10px 0; /* Add some margin for spacing */
+}
+.plot1 {
+    width: 100%; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 600px; /* Set a maximum width */
+    display: block;
+    margin: 20px auto; /* Center the image */
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Ensures space between the two divs */
+    align-items: center;            /* Aligns items vertically in the center */
+    width: 100%;                    /* Makes the container full width */
+    padding: 20px;                  /* Adds some padding around the container */
+    box-sizing: border-box;         /* Includes padding in the width calculation */
+}
+
+.container > div {
+    flex: 1;                        /* Ensures both divs take up equal space */
+    max-width: 50%;                 /* Optional: Limits the max width to 50% */
+    padding: 10px;                  /* Adds padding inside each div */
+    box-sizing: border-box;         /* Includes padding in the width calculation */
+}
+
+.plot2 {
+    width: 100%;                    /* Ensures the image takes up the full width of its div */
+    height: auto;                   /* Maintains the aspect ratio of the image */
+    max-width: 400px
 }

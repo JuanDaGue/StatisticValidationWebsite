@@ -1,0 +1,47 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    opacity: 0;
+    transform: rotateX(90deg);
+    backface-visibility: hidden;
+}
+
+.active {
+    opacity: 1;
+    transform: rotateX(0deg);
+}
+
+#home {
+    background-color: #A91D3A;
+    color: #FFFFFF;
+}
+
+#overview {
+    background-color: #C73659;
+    color: #FFFFFF;
+}
+
+#background {
+    background-color: #EEEEEE;
+    color: #151515;
+}
+
+#methodology {
+    background-color: #151515;
+    color: #FFFFFF;
+}
